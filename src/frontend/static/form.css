@@ -31,6 +31,10 @@ form input {
     border: 1px solid #ccc;
 }
 
+form input .text {
+    width: 50%;
+}
+
 .placeholder{
     color: white;
 }
