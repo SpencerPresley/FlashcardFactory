@@ -4,6 +4,7 @@ body {
     height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
+    background-color: beige
 }
 
 .webname {
@@ -31,13 +32,10 @@ form input {
     border: 1px solid #ccc;
 }
 
-form input .text {
-    width: 50%;
+.field {
+    width: 40%;
 }
 
-.placeholder{
-    color: white;
-}
 
 form label {
     padding: 10px;
