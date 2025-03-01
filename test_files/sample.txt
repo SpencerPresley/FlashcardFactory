@@ -1,0 +1,107 @@
+# Computer Science 301: Data Structures and Algorithms
+Lecture 7: Graph Algorithms
+Date: October 14, 2023
+Professor: Dr. Harrington
+I. Review of Graph Representations
+Adjacency Matrix:
+2D array where A[i][j] = 1 if there's an edge from i to j
+Space complexity: O(V²)
+Good for dense graphs
+Quick edge lookup: O(1)
+Slow to add/remove vertices: O(V²)
+Adjacency List:
+Array of linked lists where each list contains neighbors of vertex i
+Space complexity: O(V+E)
+Better for sparse graphs
+Edge lookup: O(degree(v))
+Faster to add/remove vertices
+Example discussed in class:
+
+Graph G:
+Vertices: {0, 1, 2, 3}
+Edges: {(0,1), (0,2), (1,2), (2,3)}
+
+Adjacency Matrix:
+  | 0 1 2 3
+--+--------
+0 | 0 1 1 0
+1 | 1 0 1 0
+2 | 1 1 0 1
+3 | 0 0 1 0
+
+Adjacency List:
+0 -> 1 -> 2
+1 -> 0 -> 2
+2 -> 0 -> 1 -> 3
+3 -> 2
+
+
+II. Breadth-First Search (BFS)
+Core algorithm:
+Use a queue to track vertices to visit
+Mark vertices as visited to avoid cycles
+Visit all neighbors before moving to next level
+Pseudocode:
+
+BFS(Graph G, start_vertex s):
+    Create queue Q
+    Mark s as visited
+    Enqueue s onto Q
+    
+    while Q is not empty:
+        v = Q.dequeue()
+        for each neighbor w of v:
+            if w is not visited:
+                Mark w as visited
+                Enqueue w onto Q
+
+Time complexity: O(V+E) - we visit each vertex once and each edge once
+Space complexity: O(V) for the queue and visited array
+Applications:
+Finding shortest path in unweighted graphs
+Connected components
+Level-order traversal of trees
+Network broadcasting models
+III. Depth-First Search (DFS)
+Core algorithm:
+Use recursion or a stack to track vertices
+Explore as far as possible before backtracking
+Mark vertices as visited to avoid cycles
+Pseudocode:
+
+DFS(Graph G, vertex v):
+    Mark v as visited
+    
+    for each neighbor w of v:
+        if w is not visited:
+            DFS(G, w)
+
+Time complexity: O(V+E)
+Space complexity: O(V) - worst case for recursion stack
+Applications:
+Topological sorting
+Cycle detection
+Path finding
+Strongly connected components (Kosaraju's algorithm)
+IV. Topological Sort
+Definition: Linear ordering of vertices such that for every edge (u,v), u comes before v
+Only works on Directed Acyclic Graphs (DAGs)
+DFS-based algorithm:
+Run DFS
+Add vertices to the beginning of result list during recursion callbacks
+Example applications:
+Course prerequisites
+Task scheduling
+Dependency resolution
+HOMEWORK: Implement BFS and DFS for the following graph:
+
+    A --- B
+    |     |
+    |     |
+    C --- D
+     \   /
+       E
+
+Find the traversal order for both algorithms starting from vertex A.
+
+Note to self: Ask about the project deadline during office hours.
