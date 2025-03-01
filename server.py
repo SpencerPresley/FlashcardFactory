@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from pydantic import BaseModel
-from typing import List, Optional
+from typing import List, Optional, Union
 from fastapi import FastAPI, Request, UploadFile, Form, File
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -49,20 +49,34 @@ def get_form(request: Request):
 @app.post("/build")
 def make_cards(
     request: Request,
-    courseName: str = Form(...),
+    course_name: str = Form(...),
     difficulty: str = Form(...),
-    schoolLevel: str = Form(...),
+    school_level: str = Form(...),
     subject: str = Form(...),
-    subjectMaterial: List[UploadFile] = File(),
-    numberFlashCard: Optional[int] = None,
+    rules: str = Form(...),
+    subject_material: List[UploadFile] = File(),
+    num_flash_cards: Optional[str]  = Form(None)
 ):
+    num_flash_cards = int(num_flash_cards) if num_flash_cards and num_flash_cards.strip().isdigit() else None
+
+    '''
+class UserForm(BaseModel):
+    course_name: str
+    difficulty: str
+    school_level: str
+    subject: str
+    rules: str
+    subject_material: List[UploadFile]
+    num_flash_cards: int | None = None
+    '''
     data = UserForm(
-        course_name=courseName,
+        course_name=course_name,
         difficulty=difficulty,
-        school_level=schoolLevel,
+        school_level=school_level,
         subject=subject,
-        subject_material=subjectMaterial,
-        num_flash_cards=numberFlashCard,
+        rules=rules
+        subject_material=subject_material,
+        num_flash_cards=num_flash_cards,
     )
 
     # flashCards = run(data)
