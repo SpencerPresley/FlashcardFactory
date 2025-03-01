@@ -11,9 +11,7 @@ class UserForm(BaseModel):
     schoolLevel: str
     subject: str
     subject_material: List[UploadFile]
-    numberFlashCard: int
-    numberMC: int
-    numberSA: int
+    numberFlashCard: Optional[int] = None
 
 '''
 class FlashCard(BaseModel):
