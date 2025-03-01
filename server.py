@@ -8,7 +8,7 @@ from fastapi.templating import Jinja2Templates
 
 
 class UserForm(BaseModel):
-    course_work: str
+    course_name: str
     difficulty: str
     school_level: str
     subject: str
