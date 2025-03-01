@@ -2,8 +2,6 @@ from chain_composer import ChainComposer
 from backend.models import CleanerOutput
 from backend.prompts import CLEANER_SYSTEM_PROMPT, CLEANER_HUMAN_PROMPT
 import json
-print(f"CLEANER_SYSTEM_PROMPT: {CLEANER_SYSTEM_PROMPT}")
-print(f"CLEANER_HUMAN_PROMPT: {CLEANER_HUMAN_PROMPT}")
 
 class CleanerChain:
     def __init__(

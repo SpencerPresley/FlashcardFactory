@@ -12,7 +12,6 @@ document.getElementById('form').addEventListener('submit', function(event) {
     const num_flash_cards = document.getElementById('num_flash_cards').value;
     const difficulty = document.getElementById('difficulty').value;
     const education = document.getElementById('school_level').value;
-
     // Display the collected data (or use it for further processing)
     const response = `
         Course: ${course}
@@ -21,11 +20,11 @@ document.getElementById('form').addEventListener('submit', function(event) {
         Number of Flash Cards: ${num_flash_cards}
         Difficulty: ${difficulty}
         Education Level: ${education}
-        File: ${fileInput}
     `;
     console.log(response);
 });
 
+const fileContent = null;
 const fileInput = document.getElementById('fileInput');
 const fileUploadContainer = document.getElementById('fileUploadContainer');
 const fileList = document.getElementById('fileList');
@@ -58,8 +57,22 @@ function handleFiles() {
     fileList.innerHTML = '';  // Clear previous file list
 
     for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+
+        console.log(`File Name: ${file}`);
+        console.log(`File Type: ${file.type}`);
+        console.log(`File Size: ${file.size} bytes`);
+        console.log(`Last Modified: ${new Date(file.lastModified).toLocaleString()}`);
+        
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            const fileContent = event.target.result;
+        };
+        reader.readAsText(file);
         const li = document.createElement('li');
         li.textContent = files[i].name;
         fileList.appendChild(li);
+
+
     }
 }
