@@ -8,19 +8,21 @@
     <link rel="stylesheet" href="../static/form.css">
   </head>
   <body>
-    <h1>Flashcard Maker</h1>
+    <h1 class="webname">Flashcard Maker</h1>
 
     <form action="upload.php" method="post" enctype="multipart/form-data">
-      <input type="text" id="class name" placeholder="Enter a Class Name">
+      <input type="text" id="class name" placeholder="Enter a Class Name" onfocus="this.placeholder=''" onblur="this.placeholder='Enter a Class Name'">
       <br><br>
-      <input type="text" id="subject" placeholder="Enter a Subject">
+      <input type="text" id="subject" placeholder="Enter a Subject" onfocus="this.placeholder=''" onblur="this.placeholder='Enter a Subject'">
       <br><br>
-      <input type="text" id="difficulty" placeholder="Enter Rules">
+      <input type="text" id="difficulty" placeholder="Enter Rules" onfocus="this.placeholder=''" onblur="this.placeholder='Enter Rules'">
+      <br><br>
+      <input type="text" id="num flashcards" placeholder="Enter # of Flashcards" onfocus="this.placeholder=''" onblur="this.placeholder='Enter # of Flashcards'">
 
       <br><br>
 
-      <label for="options">Choose a Difficulty Level:</label>
-      <select id="options" name="options">
+      <label for="difficulty">Choose a Difficulty Level:</label>
+      <select id="difficulty" name="options">
         <option value="easy">Easy</option>
         <option value="medium">Medium</option>
         <option value="hard">Hard</option>
@@ -28,13 +30,13 @@
 
       <br><br>
 
-      <label for="options">Choose an Education Level:</label>
-      <select id="options" name="options">
-        <option value="option1">Elementary School</option>
-        <option value="option2">Middle School</option>
-        <option value="option3">High School</option>
-        <option value="option4">University</option>
-        <option value="option5">Grad School</option>
+      <label for="education">Choose an Education Level:</label>
+      <select id="education" name="options">
+        <option value="elementary">Elementary School</option>
+        <option value="middle">Middle School</option>
+        <option value="high">High School</option>
+        <option value="university">University</option>
+        <option value="grad">Grad School</option>
       </select>
 
       <br><br>

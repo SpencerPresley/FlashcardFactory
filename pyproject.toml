@@ -9,19 +9,10 @@ description = "Backend for HenHacks2025 project"
 readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "MIT"}
-dependencies = [
-    "flask>=2.0.0",
-    "flask-cors>=3.0.10",
-    "python-dotenv>=0.19.0",
-]
 
-[project.optional-dependencies]
-dev = [
-    "pytest>=6.0",
-    "black>=22.0",
-    "isort>=5.0",
-    "flake8>=4.0",
-]
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["backend"]
 
 [tool.black]
 line-length = 88

@@ -6,9 +6,11 @@ from fastapi import FastAPI, Request, UploadFile, Form, File
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
+# USE THIS
+# from src.backend.models.user_form import UserForm
 
 class UserForm(BaseModel):
-    course_work: str
+    course_name: str
     difficulty: str
     school_level: str
     subject: str
