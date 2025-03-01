@@ -50,3 +50,44 @@ form select {
     cursor: pointer;
 }
 
+.file-upload-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+}
+
+.file-upload-container:hover {
+    background-color: #f0f0f0;
+}
+
+.file-upload-container.dragover {
+    border-color: #009688;
+    background-color: #e8f5e9;
+}
+
+/* Hiding the default file input button */
+#fileInput {
+    display: none;
+}
+
+/* Custom button style */
+.custom-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.custom-btn:hover {
+    background-color: #45a049;
+}
