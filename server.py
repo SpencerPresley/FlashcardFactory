@@ -9,7 +9,7 @@ from fastapi.templating import Jinja2Templates
 
 class UserForm(BaseModel):
     course_work: str
-    difficulty: str
+    diff_iculty: str
     school_level: str
     subject: str
     subject_material: List[UploadFile]
