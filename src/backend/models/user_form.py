@@ -3,7 +3,7 @@ from typing import List, Optional
 from fastapi import UploadFile
 
 class UserForm(BaseModel):
-    course_work: str
+    course_name: str
     difficulty: str
     school_level: str
     subject: str
