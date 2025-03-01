@@ -1,0 +1,12 @@
+In class exercise (II)
+Problem One Specification:
+1.
+You and your friend started a company to deliver software 
+solution to customer problem. 
+2. Your first business is from Salisbury University Register’s 
+office. They are using a class library to keep course 
+information. Their current class library allow to sort the 
+students list using a selection sort. 
+3. Now they ask you to improve the design to allow different 
+sorting strategy being used.
+16

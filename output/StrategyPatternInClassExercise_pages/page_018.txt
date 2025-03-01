@@ -1,0 +1,20 @@
+New Course Class Design
+Course
+-title: string
+-instructor: string
+-students: string[]
+??????
++sortStudents(): void
+…
+void sortStudents(){
+   //  sort of students array 
+??????
+}
+Course calcII = new Course(…, 
+                     new BubbleSort());
+ or 
+calcII.setSortStrategy(new BubbleSort());
+calcII.sortStudents();
+…
+Application
+18

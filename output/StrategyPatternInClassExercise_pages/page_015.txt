@@ -1,0 +1,27 @@
+Change requirement on tax 
+calculation on new design
+SaleOrder
+…
+-saleTax: SaleTax
++calTax(): double
+…
+USTax
++calTax(…):
+ double
+CanadaTax
++calcTax(…): 
+double
+GermanyTax
++calcTax(…): 
+double
+<<interface>>
+SaleTax
++calcTax(…): double
+App1
+App2
+App3
+NewZealandTax
++calTax(…):
+ double
+App4
+15

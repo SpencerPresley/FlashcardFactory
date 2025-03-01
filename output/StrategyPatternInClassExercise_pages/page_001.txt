@@ -1,0 +1,8 @@
+In class exercise (I)
+Problem specification:
+An e-commerce company based in 
+Maryland, U.S. called Dogwood, needs 
+an online sale system. You are asked 
+to write the part of the system to deal 
+with sale order. 
+1

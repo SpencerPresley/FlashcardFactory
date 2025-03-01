@@ -1,0 +1,385 @@
+In class exercise (I)
+Problem specification:
+An e-commerce company based in 
+Maryland, U.S. called Dogwood, needs 
+an online sale system. You are asked 
+to write the part of the system to deal 
+with sale order. 
+1
+Stage One
+•
+Step I. Create the class library for sale order
+ 
+Implement the sale order class according to the following specification. 
+Please note that this class is not responsible for getting input from users. 
+You must assume that the information needed is passed in through its 
+constructor. 
+
+Class 
+Attributes 
+Operations 
+ 
+SaleOrder 
+customName, 
+Calculate price before tax Calculate 
+ 
+ 
+ 
+itemSold, 
+Calculate tax amount
+ 
+ 
+ 
+itemQuantity, 
+Calculate total price
+ 
+ 
+ 
+unitPrice  
+Display a receipt with custom name, item 
+ 
+ 
+ 
+sold,quantity, unit price, tax amount and 
+ 
+ 
+ 
+total price.
+ 
+ 
+ 
+ 
+•
+Step II. Write an application using the sale order library
+ 
+Write an application to test the above class you create. Basic things you 
+need to do are to create an object of SaleOrder and to see if the receipt is 
+displayed properly.
+2
+First SaleOrder Design
+SaleOrder
+-itemQuantity: integer
+-unitPrice: double
+-itemSold: string
+-customerName: string
++calTax(): double
+…
+double calcTax(){
+   return itemQuantity*unitPrice*0.05;
+}
+3
+Result of Stage One:
+• Your library works so 
+well for Dogwood
+• Another two e-
+commerce companies 
+based in Maryland, 
+Elm and Holly, bought 
+your library and used 
+it in their on-line sale 
+application as well.
+4
+Stage Two:
+• Requirement changes:
+ Dogwood’s business is booming and they 
+decide to extend their business to 
+Delaware. 
+   You are asked to rewrite the sale order 
+library to deal with the taxation rule with 
+both Maryland and Delaware.
+5
+• Step I. Changing requirement leading to 
+changing sale order library
+ 
+• Step II. Write an application using the new sale 
+order library
+ 
+ Write an application to test the above class you 
+create. Basic things you need to do are to create 
+an object of SaleOrder and to see if the receipt 
+is displayed properly for both Maryland and 
+Delaware customers.
+6
+Result of Stage Two:
+• Your library works so well 
+for Dogwood’s business 
+in Delaware and 
+Maryland. 
+• You also sold your new 
+library to an Delaware 
+and Maryland e-
+commerce firm called 
+Chestnut.
+• Due to your change to 
+sale order library, Elm 
+and Holly are affected.
+7
+Stage Three:
+• Requirement changes:
+ Dogwood’s business is booming again and 
+they decide extend their business to the 
+rest of U.S. You are asked to rewrite the 
+sale order library to deal with the taxation 
+rule with all the states in U.S..
+8
+• Step 0. Before we do 
+anything, we need to 
+sit back and think 
+first.
+9
+What got 
+us into this 
+mess?
+Identify the 
+changing 
+part
+How can 
+we make 
+our 
+design 
+flexible?
+design
+Requirement 
+changes
+What is 
+changing in 
+sale order?
+Implement 
+changes 
+without 
+affecting the 
+existing 
+tax and 
+how tax is 
+calculated
+Separate 
+changing 
+part
+10
+New SaleOrder Design
+SaleOrder
+…
+-saleTax: SaleTax
++calTax(): double
+…
+USTax
++calTax(…):
+ double
+CanadaTax
++calcTax(…): 
+double
+GermanyTax
++calcTax(…): 
+double
+<<interface>>
+SaleTax
++calcTax(…): double
+double calcTax(){
+   return
+    saleTax.calcTax(…);
+}
+11
+• Step 1. Implement the 
+new sale order class 
+according to the new 
+design
+12
+• Step II. Write an application using the new sale order library
+ 
+ 
+Write an application to test the above class you create. Your 
+application should be something like:
+ 
+SaleOrder saleOrder1 = 
+ 
+ 
+new saleOrder(“Joe”,“appletSeed”,10,1.0, new USTax());
+ 
+SaleOrder saleOrder2 = 
+ 
+ 
+new saleOrder(“Mary”,“roseTree”,2,25.0,  new CanadaTax());
+13
+Change requirement on tax 
+calculation on old design
+SaleOrder
+-itemQuantity: integer
+-unitPrice: double
+-itemSold: string
+-customerName: string
++calTax(): double
+…
+App1
+App2
+App3
+App4
+14
+Change requirement on tax 
+calculation on new design
+SaleOrder
+…
+-saleTax: SaleTax
++calTax(): double
+…
+USTax
++calTax(…):
+ double
+CanadaTax
++calcTax(…): 
+double
+GermanyTax
++calcTax(…): 
+double
+<<interface>>
+SaleTax
++calcTax(…): double
+App1
+App2
+App3
+NewZealandTax
++calTax(…):
+ double
+App4
+15
+In class exercise (II)
+Problem One Specification:
+1.
+You and your friend started a company to deliver software 
+solution to customer problem. 
+2. Your first business is from Salisbury University Register’s 
+office. They are using a class library to keep course 
+information. Their current class library allow to sort the 
+students list using a selection sort. 
+3. Now they ask you to improve the design to allow different 
+sorting strategy being used.
+16
+Current Course Class Design
+Course
+-title: string
+-instructor: string
+-students: string[]
+……
++sortStudents(): void
+…
+void sortStudents(){
+   //  selection sort of students array 
+… …
+}
+Course calcII = new Course(…);
+…
+calcII.sortStudents();
+…
+Application
+17
+New Course Class Design
+Course
+-title: string
+-instructor: string
+-students: string[]
+??????
++sortStudents(): void
+…
+void sortStudents(){
+   //  sort of students array 
+??????
+}
+Course calcII = new Course(…, 
+                     new BubbleSort());
+ or 
+calcII.setSortStrategy(new BubbleSort());
+calcII.sortStudents();
+…
+Application
+18
+Problem Two Specification:
+1. Your second business is from Perdue Stadium 
+Ticket Office. They asked you to write a class 
+library to calculate ticket sale price. 
+2. Here are the rule for ticket sale at Perdue 
+Stadium:
+-
+Ticket sale price consist of two parts: ticket price and 
+sale tax.
+-
+Ticket price also varies between children,  and adult.
+19
+• Short sighted with quick and dirt approach
+• Long term with solid and clear approach 
+ 
+Your view
+20
+SaleOrder Design
+SaleOrder
+…
+-saleTax: SaleTax
++calTax(): double
+…
+USTax
++calTax(…):
+ double
+CanadaTax
++calcTax(…): 
+double
+GermanyTax
++calcTax(…): 
+double
+<<interface>>
+SaleTax
++calcTax(…): double
+double calcTax(){
+   return
+    saleTax.calcTax(…);
+}
+21
+BubbleSort
++sort(string[]):void
+SelectionSort
++sort(string[]):void
+QuickSort
++sort(string[]):void
+<<interface>>
+SortStrategy
++sort(string[]):void
+Course
+-title: string
+-instructor: string
+-students: string[]
+-sortStrategy: SortStrategy
++sortStudents(): void
++setSortStrategy(SortStrategy): void
+void sortStudents(){
+   //  sort of students array 
+sortStrategy.sort(students);
+}
+22
+US
++getAmt(…):doubld
+Canada
++getAmt(…):double
+Germany
++getAmt(…):double
+<<interface>>
+TaxStrategy
++getAmt(…):double
+TicketSale
+-priceStrategy: PriceStrategy
+-taxStrategy: TaxStrategy
+…
++getAmt(): double
+double getAmount(){
+    return
+    priceStrategy.getAmt(…)
+ 
++
+    taxStrategy.getAmt(…);
+}
+Senior
++getAmt(…):doubld
+Children
++getAmt(…):double
+Adult
++getAmt(…):double
+<<interface>>
+PriceStrategy
++getAmt(…):double
+23

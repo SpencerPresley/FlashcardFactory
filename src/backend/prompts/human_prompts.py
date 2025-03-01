@@ -23,4 +23,3 @@ HUMAN_PROMPT = """
 
 {number_flash_cards}
 """
-

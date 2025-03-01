@@ -1,0 +1,12 @@
+First SaleOrder Design
+SaleOrder
+-itemQuantity: integer
+-unitPrice: double
+-itemSold: string
+-customerName: string
++calTax(): double
+…
+double calcTax(){
+   return itemQuantity*unitPrice*0.05;
+}
+3

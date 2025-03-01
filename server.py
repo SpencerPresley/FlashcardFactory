@@ -6,10 +6,9 @@ from fastapi import FastAPI, Request, UploadFile, Form, File
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-import os
-
 # USE THIS
 from src.backend.models.user_form import UserForm
+
 
 """
 class UserForm(BaseModel):

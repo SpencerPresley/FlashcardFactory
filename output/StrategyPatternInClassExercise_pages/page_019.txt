@@ -1,0 +1,12 @@
+Problem Two Specification:
+1. Your second business is from Perdue Stadium 
+Ticket Office. They asked you to write a class 
+library to calculate ticket sale price. 
+2. Here are the rule for ticket sale at Perdue 
+Stadium:
+-
+Ticket sale price consist of two parts: ticket price and 
+sale tax.
+-
+Ticket price also varies between children,  and adult.
+19

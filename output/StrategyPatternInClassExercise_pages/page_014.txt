@@ -1,0 +1,14 @@
+Change requirement on tax 
+calculation on old design
+SaleOrder
+-itemQuantity: integer
+-unitPrice: double
+-itemSold: string
+-customerName: string
++calTax(): double
+…
+App1
+App2
+App3
+App4
+14

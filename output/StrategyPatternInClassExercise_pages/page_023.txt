@@ -1,0 +1,31 @@
+US
++getAmt(…):doubld
+Canada
++getAmt(…):double
+Germany
++getAmt(…):double
+<<interface>>
+TaxStrategy
++getAmt(…):double
+TicketSale
+-priceStrategy: PriceStrategy
+-taxStrategy: TaxStrategy
+…
++getAmt(): double
+double getAmount(){
+    return
+    priceStrategy.getAmt(…)
+ 
++
+    taxStrategy.getAmt(…);
+}
+Senior
++getAmt(…):doubld
+Children
++getAmt(…):double
+Adult
++getAmt(…):double
+<<interface>>
+PriceStrategy
++getAmt(…):double
+23

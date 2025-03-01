@@ -1,0 +1,9 @@
+Stage Two:
+• Requirement changes:
+ Dogwood’s business is booming and they 
+decide to extend their business to 
+Delaware. 
+   You are asked to rewrite the sale order 
+library to deal with the taxation rule with 
+both Maryland and Delaware.
+5
