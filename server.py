@@ -6,9 +6,12 @@ from fastapi import FastAPI, Request, UploadFile, Form, File
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-# USE THIS
-# from src.backend.models.user_form import UserForm
+import os
 
+# USE THIS
+from src.backend.models.user_form import UserForm
+
+"""
 class UserForm(BaseModel):
     course_name: str
     difficulty: str
@@ -16,7 +19,7 @@ class UserForm(BaseModel):
     subject: str
     subject_material: List[UploadFile]
     num_flash_cards: int | None = None
-
+"""
 
 """
 class FlashCard(BaseModel):
@@ -32,10 +35,12 @@ class FlashCards(BaseModel):
 
 app = FastAPI()
 
-templates = Jinja2Templates(directory="/src/frontend/templates")
+templates = Jinja2Templates(directory="src/frontend/templates")
 
 
-@app.mount("/public", StaticFiles(directory="public"), name="public")
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+
 @app.get("/")
 def get_form(request: Request):
     return templates.TemplateResponse(request=request, name="form.html")
@@ -52,13 +57,12 @@ def make_cards(
     numberFlashCard: Optional[int] = None,
 ):
     data = UserForm(
-        courseName=courseName,
+        course_name=courseName,
         difficulty=difficulty,
-        schoolLevel=schoolLevel,
-        schoolLevel=schoolLevel,
+        school_level=schoolLevel,
         subject=subject,
-        subjectMaterial=subjectMaterial,
-        numberFlashCard=numberFlashCard,
+        subject_material=subjectMaterial,
+        num_flash_cards=numberFlashCard,
     )
 
     # flashCards = run(data)
