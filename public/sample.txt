@@ -1,0 +1,2 @@
+Whos the first president	George Washington;
+Whos the second president	John Adams;
