@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from pydantic import BaseModel
 from typing import List, Optional
 from fastapi import FastAPI, Request, UploadFile
@@ -8,10 +10,10 @@ from fastapi.templating import Jinja2Templates
 class UserForm(BaseModel):
     course_work: str
     difficulty: str
-    schoolLevel: str
+    school_level: str
     subject: str
     subject_material: List[UploadFile]
-    numberFlashCard: Optional[int] = None
+    num_flash_cards: int | None = None
 
 '''
 class FlashCard(BaseModel):
