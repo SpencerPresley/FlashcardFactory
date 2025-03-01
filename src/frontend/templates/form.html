@@ -40,8 +40,14 @@
 
       <br><br>
     
-      <label for="file">Choose a file:</label>
-      <input type="file" id="subject_material" name="subject_material" multiple required>
+      <div class="file-upload-container" id="fileUploadContainer">
+        <input type="file" id="fileInput" multiple>
+        <p>Drag and drop your files here or</p>
+        <button class="custom-btn" onclick="document.getElementById('fileInput').click();">Choose Files</button>
+    </div>
+
+    <h3>Selected Files:</h3>
+    <ul id="fileList"></ul>
       <br><br>
       <input type="submit" value="Submit">
     </form>
