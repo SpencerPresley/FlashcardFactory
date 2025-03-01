@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pydantic import BaseModel
 from typing import List, Optional
-from fastapi import FastAPI, Request, UploadFile
+from fastapi import FastAPI, Request, UploadFile, Form, File
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
@@ -15,26 +15,55 @@ class UserForm(BaseModel):
     subject_material: List[UploadFile]
     num_flash_cards: int | None = None
 
-'''
+
+"""
 class FlashCard(BaseModel):
     question: str
     answer: str
-'''
+"""
+
 
 class FlashCards(BaseModel):
-    #flashCards: List[FlashCard]
+    # flashCards: List[FlashCard]
     file_name: str
 
 
 app = FastAPI()
 
 templates = Jinja2Templates(directory="/src/frontend/templates")
+
+
 @app.mount("/public", StaticFiles(directory="public"), name="public")
-
-
 @app.get("/")
 def get_form(request: Request):
     return templates.TemplateResponse(request=request, name="form.html")
 
+
 @app.post("/build")
-def make_cards(reque)
+def make_cards(
+    request: Request,
+    courseName: str = Form(...),
+    difficulty: str = Form(...),
+    schoolLevel: str = Form(...),
+    subject: str = Form(...),
+    subjectMaterial: List[UploadFile] = File(),
+    numberFlashCard: Optional[int] = None,
+):
+    data = UserForm(
+        courseName=courseName,
+        difficulty=difficulty,
+        schoolLevel=schoolLevel,
+        schoolLevel=schoolLevel,
+        subject=subject,
+        subjectMaterial=subjectMaterial,
+        numberFlashCard=numberFlashCard,
+    )
+
+    # flashCards = run(data)
+    flash_cards = FlashCards(file_name="sample.txt")
+
+    return templates.TemplateResponse(
+        request=request,
+        name="flashcards.html",
+        context={"Settings": data, "Test": flash_cards},
+    )
