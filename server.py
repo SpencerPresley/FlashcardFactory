@@ -6,7 +6,7 @@ from fastapi.templating import Jinja2Templates
 
 
 class UserForm(BaseModel):
-    courseWork: str
+    course_work: str
     difficulty: str
     schoolLevel: str
     subject: str
@@ -23,7 +23,7 @@ class FlashCard(BaseModel):
 
 class FlashCards(BaseModel):
     #flashCards: List[FlashCard]
-    downloadLink: str
+    file_name: str
 
 
 app = FastAPI()
