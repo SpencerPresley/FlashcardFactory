@@ -15,21 +15,26 @@ class UserForm(BaseModel):
     numberMC: int
     numberSA: int
 
-
+'''
 class FlashCard(BaseModel):
     question: str
     answer: str
+'''
 
-
-class CardDeck(BaseModel):
-    flashCards: List[FlashCard]
+class FlashCards(BaseModel):
+    #flashCards: List[FlashCard]
     downloadLink: str
 
 
 app = FastAPI()
 
-
+templates = Jinja2Templates(directory="/src/frontend/templates")
 @app.mount("/public", StaticFiles(directory="public"), name="public")
+
+
 @app.get("/")
 def get_form(request: Request):
     return templates.TemplateResponse(request=request, name="form.html")
+
+@app.post("/build")
+def make_cards(reque)
