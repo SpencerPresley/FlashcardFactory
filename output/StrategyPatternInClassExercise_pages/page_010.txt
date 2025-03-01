@@ -1,0 +1,29 @@
+What got 
+us into this 
+mess?
+Identify the 
+changing 
+part
+How can 
+we make 
+our 
+design 
+flexible?
+design
+Requirement 
+changes
+What is 
+changing in 
+sale order?
+Implement 
+changes 
+without 
+affecting the 
+existing 
+tax and 
+how tax is 
+calculated
+Separate 
+changing 
+part
+10

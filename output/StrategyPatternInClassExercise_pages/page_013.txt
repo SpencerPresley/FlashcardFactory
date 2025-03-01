@@ -1,0 +1,16 @@
+• Step II. Write an application using the new sale order library
+ 
+ 
+Write an application to test the above class you create. Your 
+application should be something like:
+ 
+SaleOrder saleOrder1 = 
+ 
+ 
+new saleOrder(“Joe”,“appletSeed”,10,1.0, new USTax());
+ 
+SaleOrder saleOrder2 = 
+ 
+ 
+new saleOrder(“Mary”,“roseTree”,2,25.0,  new CanadaTax());
+13

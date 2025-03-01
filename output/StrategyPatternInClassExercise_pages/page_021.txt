@@ -1,0 +1,23 @@
+SaleOrder Design
+SaleOrder
+…
+-saleTax: SaleTax
++calTax(): double
+…
+USTax
++calTax(…):
+ double
+CanadaTax
++calcTax(…): 
+double
+GermanyTax
++calcTax(…): 
+double
+<<interface>>
+SaleTax
++calcTax(…): double
+double calcTax(){
+   return
+    saleTax.calcTax(…);
+}
+21

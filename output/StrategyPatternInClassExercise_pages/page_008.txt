@@ -1,0 +1,8 @@
+Stage Three:
+• Requirement changes:
+ Dogwood’s business is booming again and 
+they decide extend their business to the 
+rest of U.S. You are asked to rewrite the 
+sale order library to deal with the taxation 
+rule with all the states in U.S..
+8

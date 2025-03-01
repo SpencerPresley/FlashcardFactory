@@ -1,0 +1,21 @@
+BubbleSort
++sort(string[]):void
+SelectionSort
++sort(string[]):void
+QuickSort
++sort(string[]):void
+<<interface>>
+SortStrategy
++sort(string[]):void
+Course
+-title: string
+-instructor: string
+-students: string[]
+-sortStrategy: SortStrategy
++sortStudents(): void
++setSortStrategy(SortStrategy): void
+void sortStudents(){
+   //  sort of students array 
+sortStrategy.sort(students);
+}
+22

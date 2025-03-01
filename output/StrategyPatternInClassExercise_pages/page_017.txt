@@ -1,0 +1,18 @@
+Current Course Class Design
+Course
+-title: string
+-instructor: string
+-students: string[]
+……
++sortStudents(): void
+…
+void sortStudents(){
+   //  selection sort of students array 
+… …
+}
+Course calcII = new Course(…);
+…
+calcII.sortStudents();
+…
+Application
+17

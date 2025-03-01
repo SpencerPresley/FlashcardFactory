@@ -1,0 +1,12 @@
+• Step I. Changing requirement leading to 
+changing sale order library
+ 
+• Step II. Write an application using the new sale 
+order library
+ 
+ Write an application to test the above class you 
+create. Basic things you need to do are to create 
+an object of SaleOrder and to see if the receipt 
+is displayed properly for both Maryland and 
+Delaware customers.
+6
