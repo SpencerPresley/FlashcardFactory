@@ -115,7 +115,7 @@ def test_orchestrator_run():
     # Run the orchestrator
     print("\nRunning AI orchestrator pipeline...")
     try:
-        flashcards_result = run(
+        result = run(
             user_form=user_form,
             api_key=api_key,
         )
@@ -123,16 +123,37 @@ def test_orchestrator_run():
         # Print the results
         print("\n====== Flashcards Generated ======")
         
-        # Check the type of the result
-        if isinstance(flashcards_result, str):
-            print(f"Received string output of length: {len(flashcards_result)}")
+        # Check if result is a dictionary with expected keys
+        if isinstance(result, dict) and "flashcards" in result:
+            print(f"File saved to: {result.get('flashcards_file_path', 'Unknown location')}")
+            
+            # Extract flashcards from the result
+            flashcards = result.get("flashcards", "")
+            print(f"Flashcards string length: {len(flashcards)}")
             
             # Try to parse it as JSON
             try:
-                parsed_flashcards = json.loads(flashcards_result)
+                parsed_flashcards = json.loads(flashcards)
                 print("Successfully parsed as JSON")
                 
-                if isinstance(parsed_flashcards, list):
+                if isinstance(parsed_flashcards, dict) and "flashcards" in parsed_flashcards:
+                    flashcards_str = parsed_flashcards["flashcards"]
+                    print(f"Number of flashcard pairs: {flashcards_str.count(';')}")
+                    
+                    # Print a sample of the flashcards
+                    print("\nSample flashcards:")
+                    pairs = flashcards_str.split(";")
+                    for i, pair in enumerate(pairs[:3]):
+                        if pair.strip():  # Skip empty pairs
+                            try:
+                                question, answer = pair.split(",", 1)
+                                print(f"\nFlashcard {i+1}:")
+                                print(f"  Question: {question.strip()}")
+                                print(f"  Answer: {answer.strip()}")
+                            except ValueError:
+                                print(f"  Invalid format: {pair}")
+                
+                elif isinstance(parsed_flashcards, list):
                     print(f"Number of flashcards: {len(parsed_flashcards)}")
                     # Print first 3 flashcards
                     for i, card in enumerate(parsed_flashcards[:3]):
@@ -143,37 +164,20 @@ def test_orchestrator_run():
                         else:
                             print(f"  {card}")
                 else:
-                    print("JSON result is not a list. Preview:")
+                    print("JSON result preview:")
                     print(str(parsed_flashcards)[:500] + "..." if len(str(parsed_flashcards)) > 500 else parsed_flashcards)
             
             except json.JSONDecodeError:
                 # Not valid JSON, just print part of the string
-                print("Result is not valid JSON. Preview:")
-                print(flashcards_result[:500] + "..." if len(flashcards_result) > 500 else flashcards_result)
+                print("Flashcards text (first 500 chars):")
+                print(flashcards[:500] + "..." if len(flashcards) > 500 else flashcards)
         
-        elif isinstance(flashcards_result, list):
-            print(f"Number of flashcards: {len(flashcards_result)}")
-            # Print the first 3 flashcards
-            for i, card in enumerate(flashcards_result[:3]):
-                print(f"\nFlashcard {i+1}:")
-                if isinstance(card, dict):
-                    print(f"  Question: {card.get('question', 'No question')}")
-                    print(f"  Answer: {card.get('answer', 'No answer')}")
-                else:
-                    print(f"  {card}")
         else:
-            print(f"Unexpected result type: {type(flashcards_result)}")
-            print(str(flashcards_result)[:500] + "..." if len(str(flashcards_result)) > 500 else flashcards_result)
-            
-        # Save the output to a file for inspection
-        output_path = test_files_dir / "flashcards_output.txt"
-        with open(output_path, "w") as f:
-            if isinstance(flashcards_result, str):
-                f.write(flashcards_result)
-            else:
-                f.write(json.dumps(flashcards_result, indent=2))
+            print(f"Unexpected result type: {type(result)}")
+            print(str(result)[:500] + "..." if len(str(result)) > 500 else result)
         
-        print(f"\nSaved output to: {output_path}")
+        # No need to save the output ourselves since it's already being saved by the run() function
+        print(f"\nOutput has been saved by the orchestrator")
         print("\n====== Test Complete ======")
         
     except Exception as e:

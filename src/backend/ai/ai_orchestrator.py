@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import List, TYPE_CHECKING
 import os
+from pathlib import Path
 
 from backend.ai import CleanerChain, FlashcarderChain
 from backend.models import UserFormReg
@@ -16,7 +17,7 @@ def run(
     api_key: str,
     cleaner_model: str | None = "gemini-2.0-flash-thinking-exp-01-21",
     flashcarder_model: str | None = "gemini-2.0-pro-exp-02-05"
-):
+) -> dict[str, str]:
     subject_material = _run_parsing(user_form.subject_material)
     cleaned_text = _run_cleaner(
         subject_material,
@@ -29,7 +30,15 @@ def run(
         api_key,
         flashcarder_model
     )
-    return flashcards
+    public_dir = _get_public_dir()
+    flashcards_file_path = public_dir / "flashcards.txt"
+    with open(flashcards_file_path, "w") as f:
+        f.write(flashcards)
+        
+    return {
+        "flashcards_file_path": str(flashcards_file_path),
+        "flashcards": flashcards
+    }
 
 def _run_parsing(subject_material: List[UploadFile]) -> str:
     """Parse documents from uploaded files using the appropriate parser strategy.
@@ -129,3 +138,8 @@ def _run_flashcarder(
     flashcards = flashcarder.run(user_form_reg).get("flashcards").get("flashcards")
     
     return flashcards
+
+def _get_public_dir() -> Path:
+    current_file = Path(__file__)
+    project_root = current_file.parents[3]
+    return project_root / "public"
