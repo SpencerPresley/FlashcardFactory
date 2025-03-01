@@ -171,3 +171,5 @@ cython_debug/
 .pypirc
 
 backend/local
+.DS_Store
+public/flashcards.txt
