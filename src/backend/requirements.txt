@@ -1,0 +1,3 @@
+fastapi
+chaincomposer
+python-dotenv
