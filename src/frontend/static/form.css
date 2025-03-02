@@ -138,6 +138,8 @@ ul {
 }
 
 .steps {
+    font-family: 'Segoe UI';
+    font-weight: bold;
     display: flex;
     justify-content: center;
     text-align: center;

@@ -9,16 +9,15 @@
   </head>
   <body>
     <h1 class="webname">Flashcard Maker</h1>
-    <p class="about">Have an exam coming up? Flashcard Maker automatically transforms your powerpoints, pdfs, notes, and more into flashcards!
+    <p class="about">Have an exam coming up? Flashcard Maker automatically transforms powerpoints, notes, and more into flashcards!
       Simply upload your files, add some details about your class, and generate your flashcards. It's that easy!
     </p>
     <div class="steps">
-      <p class="instructions">Step 1: Upload your files (.pdf, .ppt, .docx, .txt).</p>
+      <p class="instructions">Step 1: Upload your files (.pdf, .pptx, .docx, .txt).</p>
     </div>
     <div class="steps">
       <p class="instructions">Step 2: Enter a class name, subject, rules, # of flashcards (optional), difficulty, and education level.</p>
     </div>
-
     <div class="steps">
       <p class="instructions">Step 3: Generate your flashcards!</p>
     </div>
@@ -38,20 +37,19 @@
         <input type="text" name="course_name" class="field" id="course_name" placeholder="Enter a Class Name" onfocus="this.placeholder=''" onblur="this.placeholder='Enter a Class Name'" required>
         <input type="text" name="subject" class="field" id="subject" placeholder="Enter a Subject" onfocus="this.placeholder=''" onblur="this.placeholder='Enter a Subject'" required>
       </div>
-
       <div class="fields2">
         <input type="text" name="rules" class="field" id="rules" placeholder="Enter Rules" onfocus="this.placeholder=''" onblur="this.placeholder='Enter Rules'" required>
         <input type="number" name="num_flash_cards" class="field" id="num_flash_cards" placeholder="Enter # of Flashcards" min="1" onfocus="this.placeholder=''" onblur="this.placeholder='Enter # of Flashcards'">
       </div>
 
       <div class="fields3">
-      <select class="field" id="difficulty" name="difficulty">
+      <select class="field" id="difficulty" name="difficulty" required>
         <option value="" disabled selected>Select a Difficulty</option>
         <option value="easy">Easy</option>
         <option value="medium">Medium</option>
         <option value="hard">Hard</option>
       </select>
-      <select class="field" id="school_level" name="school_level">
+      <select class="field" id="school_level" name="school_level" required>
         <option value="" disabled selected>Select an Education Level</option>
         <option value="elementary">Elementary School</option>
         <option value="middle">Middle School</option>
