@@ -4,13 +4,11 @@ document
     this.value = this.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
   });
 
-const form = document.getElementById("form");
+const form = document.getElementById("file-input");
 
 form.addEventListener("submit", function (event) {
-  event.preventDefault(); // Prevents the default form submission
-
+  //event.preventDefault(); // Prevents the default form submission
   form.submit();
-  console.log(response);
 });
 
 const fileInput = document.getElementById('fileInput');
@@ -22,7 +20,7 @@ fileInput.addEventListener('change', handleFiles);
 
 // Handle drag-over event (needed to allow dropping files)
 fileUploadContainer.addEventListener('dragover', function(event) {
-    event.preventDefault();
+    //event.preventDefault();
     fileUploadContainer.classList.add('dragover');
 });
 
@@ -33,7 +31,7 @@ fileUploadContainer.addEventListener('dragleave', function(event) {
 
 // Handle drop event (files being dropped)
 fileUploadContainer.addEventListener('drop', function(event) {
-    event.preventDefault();
+    //event.preventDefault();
     fileUploadContainer.classList.remove('dragover');
     fileInput.files = event.dataTransfer.files;  // Set dropped files to the input
     handleFiles(); // Process the files
