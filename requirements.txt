@@ -5,3 +5,4 @@ fastapi
 unstructured
 jinja2
 docx2txt
+pymupdf

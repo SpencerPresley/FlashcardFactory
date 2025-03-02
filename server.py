@@ -13,8 +13,7 @@ from src.backend.ai import run
 
 from dotenv import load_dotenv
 
-load_dotenv
-
+load_dotenv()
 
 
 app = FastAPI()
@@ -40,9 +39,13 @@ def make_cards(
     subject: str = Form(...),
     rules: str = Form(...),
     subject_material: List[UploadFile] = File(),
-    num_flash_cards: Optional[str]  = Form(None)
+    num_flash_cards: Optional[str] = Form(None),
 ):
-    num_flash_cards = int(num_flash_cards) if num_flash_cards and num_flash_cards.strip().isdigit() else None
+    num_flash_cards = (
+        int(num_flash_cards)
+        if num_flash_cards and num_flash_cards.strip().isdigit()
+        else None
+    )
 
     data = UserForm(
         course_name=course_name,
@@ -53,15 +56,10 @@ def make_cards(
         subject_material=subject_material,
         num_flash_cards=num_flash_cards,
     )
-    
-   # flash_cards = "sample.txt"
-    
-    flash_cards = run(
-        data,
-        os.getenv("GOOGLE_API_KEY")
-    )
-    
-    
+
+    # flash_cards = "sample.txt"
+
+    flash_cards = run(data, os.getenv("GOOGLE_API_KEY"))
 
     return templates.TemplateResponse(
         request=request,
