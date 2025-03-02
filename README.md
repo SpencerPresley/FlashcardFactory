@@ -1,4 +1,4 @@
-![Flash Factory Logo]("./FlashFactory.png")
+![Flash Factory Logo]("FlashFactory.png")
 
 ## Table of Contents
 
