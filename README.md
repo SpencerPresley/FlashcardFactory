@@ -9,10 +9,11 @@
   - [How It Works](#how-it-works)
   - [Tech Stack](#tech-stack)
   - [Technologies Used](#technologies-used)
-  - [Installation](#installation)
-    - [Prerequisites](#prerequisites)
-    - [Setup](#setup)
   - [Usage](#usage)
+    - [Locally](#locally)
+      - [Installation](#installation)
+        - [Prerequisites](#prerequisites)
+        - [Setup](#setup)
     - [Using our Hosted Site](#using-our-hosted-site)
     - [Running Locally](#running-locally)
   - [Exporting to Quizlet](#exporting-to-quizlet)
@@ -56,14 +57,19 @@ FlashcardFactory is an intelligent study tool that automatically generates custo
   <img src="https://img.shields.io/badge/Google_Gemini-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Google Gemini" />
 </div>
 
-## Installation
 
-### Prerequisites
+## Usage
+
+### Locally
+
+#### Installation
+
+##### Prerequisites
 
 - Python 3.8+
 - Google API key (for Gemini AI)
 
-### Setup
+##### Setup
 
 1. Clone the repository
 
@@ -76,6 +82,7 @@ FlashcardFactory is an intelligent study tool that automatically generates custo
 
    ```bash
    pip install -r requirements.txt
+   pip install -e .
    ```
 
 3. Set up your environment variables
@@ -88,14 +95,12 @@ FlashcardFactory is an intelligent study tool that automatically generates custo
 4. Run the application
 
    ```bash
-   ./run.sh
+   sh run.sh
    # or
-   python server.py
+   uvicorn server:app --reload
    ```
 
 5. Open your browser and navigate to `http://localhost:8000`
-
-## Usage
 
 ### Using our Hosted Site
 
