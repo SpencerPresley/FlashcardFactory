@@ -1,7 +1,13 @@
 :root {
-  --background-color: beige;
+  --primary-color: #4a93e7;
+  --accent-color: #4CAF50;
+  --accent-hover: #45a049;
+  --background-color: white;
   --flashcard-bg-color: white;
+  --step-bg-color: beige;
   --text-color: black;
+  --shadow: 0px 8px 8px rgba(0, 0, 0, 0.1);
+  --border-radius: 10px;
 }
 
 body {
@@ -9,85 +15,167 @@ body {
   font-family: Arial, sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .webname {
-  background-color: #4a93e7;
+  background-color: var(--primary-color);
   font-family: "Segoe UI";
-  width: 100;
+  width: 100%;
   margin-top: 0;
   padding: 10px;
   color: white;
-  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
   font-size: 5vw;
   text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
-.flashcard {
-  margin: 0 auto;
-  background-color: var(--flashcard-bg-color);
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.card-counter {
+  font-size: 1.5vw;
+  margin: 10px 0 20px;
+  font-family: "Segoe UI";
+  font-weight: bold;
+}
+
+/* Flashcard container with perspective for 3D effect */
+.flashcard-container {
   width: 100%;
-  text-align: center;
-  font-size: 4vw;
-  margin-bottom: 30px;
-  width: 43%;
-  height: 80%;
+  height: 50vh;
+  perspective: 1000px;
+  margin-bottom: 20px;
 }
 
-.answer {
-  width: 50%; /* Adjust as needed */
-  margin: 0 auto; /* Centers it horizontally */
-  display: flex;
-}
-
-.prevNext {
-  width: 50%; /* Adjust as needed */
-  margin: 0 auto; /* Centers it horizontally */
-  display: flex;
-}
-
-.prevNext #prev-card {
-  flex: 1;
-}
-
-.prevNext #next-card {
-  flex: 1;
-}
-
-.answer #toggle-answer {
-  flex:1;
-}
-
-button {
-  padding: 10px 20px;
-  margin: 5px;
-  font-size: 3vw;
+/* Main flashcard */
+.flashcard {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
   cursor: pointer;
 }
 
-.download {
-  width: 25%;
-  margin: 10px auto;
-  display: flex;
+/* Flipped state */
+.flashcard.flipped {
+  transform: rotateY(180deg);
 }
 
-a {
-  flex: 1;
-  text-decoration: none;
-  background-color: #4CAF50;
+/* Common styles for both sides */
+.flashcard-front, .flashcard-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: auto;
+  background-color: var(--step-bg-color);
+}
+
+/* Front of card */
+.flashcard-front {
+  z-index: 2;
+}
+
+/* Back of card */
+.flashcard-back {
+  transform: rotateY(180deg);
+}
+
+#question, #answer {
+  font-size: 2.5vw;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Single row of controls */
+.controls-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Regular buttons stay blue */
+button {
+  padding: 10px 15px;
+  font-size: 1.5vw;
+  cursor: pointer;
+  background-color: var(--primary-color);
   color: white;
-  padding: 12px 20px;
   border: none;
-  border-radius: 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  flex: 1;
+  max-width: 150px;
+}
+
+button:hover {
+  background-color: #3a83d7; /* Slightly darker blue */
+}
+
+/* Download button in green */
+.downloadButton {
+  display: inline-block;
+  text-decoration: none;
+  background-color: var(--accent-color); /* Green */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
   font-weight: bold;
   text-align: center;
-  font-size: 3vw;
+  font-size: 1.5vw;
   cursor: pointer;
+  margin-top: 10px;
 }
 
-a:hover {
-  background-color: #45a049;
+.downloadButton:hover {
+  background-color: var(--accent-hover); /* Darker green on hover */
+}
+
+/* Media queries for better responsiveness */
+@media (max-width: 768px) {
+  .flashcard-container {
+    height: 40vh;
+  }
+  
+  #question, #answer {
+    font-size: 4vw;
+  }
+  
+  button, .downloadButton {
+    font-size: 3vw;
+  }
+  
+  .card-counter {
+    font-size: 3vw;
+  }
+}
+
+@media (max-height: 600px) {
+  .flashcard-container {
+    height: 35vh;
+  }
 }

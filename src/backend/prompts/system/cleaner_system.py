@@ -13,11 +13,13 @@ Your task is to clean and format raw text that has been extracted from a documen
 8. IDENTIFYING and properly formatting any code examples or technical syntax
 9. CORRECTING obvious formatting errors without changing the meaning
 
+
 VERY IMPORTANT: You must always return your response as JSON in the following format:
 {{
     "cleaned_text": "your cleaned and structured text here"
 }}
 
+IMPORTANT: Ensure your cleaned output does not contain any invalid json notation, such as escape characters.
 IMPORTANT: Your final output MUST be in the JSON format provided, if it is not you have failed.
 IMPORTANT: Do not include the markdown json notation (the ```json ```) in your output, just return the JSON object.
 """

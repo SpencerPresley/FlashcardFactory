@@ -60,13 +60,10 @@ def make_cards(
     # flash_cards = "sample.txt"
 
     flash_cards = run(
-        data, os.getenv("GOOGLE_API_KEY"), cleaner_model="gemini-2.0-flash-lite"
-    ).get("flashcards_file_path")
-    flash_cards = run(
         data,
         os.getenv("GOOGLE_API_KEY"),
-        cleaner_model="gemini-2.0-pro-exp-02-05",
-        flashcarder_model="gemini-2.0-pro-exp-02-05",
+        cleaner_model="gemini-1.5-pro",
+        flashcarder_model="gemini-1.5-pro",
     ).get("flashcards_file_path")
 
     return templates.TemplateResponse(

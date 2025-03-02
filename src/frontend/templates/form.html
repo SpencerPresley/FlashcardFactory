@@ -22,6 +22,22 @@
       <p class="instructions">Step 3: Generate your flashcards!</p>
     </div>
     <br><br>
+    
+    <!-- Simplified Loading Overlay with inline styles -->
+    <div id="loading-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 9999; justify-content: center; align-items: center;">
+      <div style="background-color: white; padding: 30px; border-radius: 10px; text-align: center; box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);">
+        <div style="border: 6px solid #f3f3f3; border-top: 6px solid #4a93e7; border-radius: 50%; width: 50px; height: 50px; margin: 0 auto 15px; animation: spin 2s linear infinite;"></div>
+        <div style="font-size: 18px; font-weight: bold; color: #333;">Creating your flashcards...</div>
+      </div>
+    </div>
+
+    <style>
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+    
     <form id="file-input" action="/build" method="post" enctype="multipart/form-data">
       
       <div class="file-upload-container" id="fileUploadContainer">
@@ -59,7 +75,7 @@
       </select>
       </div>
     <div class="submit">
-      <input class="submit-button" type="submit" value="Create Flashcards!">
+      <button type="button" id="create-button" class="submit-button">Create Flashcards!</button>
     </div>
     
     </form>
@@ -69,5 +85,40 @@
     <br><br>
 
     <script src="../static/formRules.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Get references to key elements
+        const form = document.getElementById('file-input');
+        const createButton = document.getElementById('create-button');
+        const loadingOverlay = document.getElementById('loading-overlay');
+        const fileInput = document.getElementById('fileInput');
+        
+        // Add click event to the button
+        createButton.addEventListener('click', function(e) {
+          e.preventDefault(); // Prevent default behavior
+          
+          // First check if files are selected
+          if (fileInput.files.length === 0) {
+            alert('Please select at least one file to upload.');
+            return;
+          }
+          
+          // Check if the form is valid using HTML5 validation
+          if (form.checkValidity()) {
+            // Show the loading overlay with all necessary styles
+            loadingOverlay.style.display = 'flex';
+            console.log("Overlay displayed"); // Debug
+            
+            // Submit the form after a short delay
+            setTimeout(function() {
+              form.submit();
+            }, 100);
+          } else {
+            // Trigger the browser's validation UI
+            form.reportValidity();
+          }
+        });
+      });
+    </script>
   </body>
 </html>
