@@ -10,12 +10,11 @@
   - [Tech Stack](#tech-stack)
   - [Technologies Used](#technologies-used)
   - [Usage](#usage)
-    - [Locally](#locally)
-      - [Installation](#installation)
-        - [Prerequisites](#prerequisites)
-        - [Setup](#setup)
     - [Using our Hosted Site](#using-our-hosted-site)
     - [Running Locally](#running-locally)
+      - [Prerequisites](#prerequisites)
+      - [Installation](#installation)
+    - [How to Use](#how-to-use)
   - [Exporting to Quizlet](#exporting-to-quizlet)
   - [Project Structure](#project-structure)
   - [Acknowledgments](#acknowledgments)
@@ -57,19 +56,26 @@ FlashcardFactory is an intelligent study tool that automatically generates custo
   <img src="https://img.shields.io/badge/Google_Gemini-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Google Gemini" />
 </div>
 
-
 ## Usage
 
-### Locally
+You can use FlashcardFactory either through our hosted web application or by running it locally on your machine.
 
-#### Installation
+### Using our Hosted Site
 
-##### Prerequisites
+For the quickest experience with no setup required, visit our hosted application at:
+
+[HOSTED_SITE_URL_PLACEHOLDER]
+
+### Running Locally
+
+If you prefer to run the application on your own machine, follow these steps:
+
+#### Prerequisites
 
 - Python 3.8+
 - Google API key (for Gemini AI)
 
-##### Setup
+#### Installation
 
 1. Clone the repository
 
@@ -102,13 +108,9 @@ FlashcardFactory is an intelligent study tool that automatically generates custo
 
 5. Open your browser and navigate to `http://localhost:8000`
 
-### Using our Hosted Site
+### How to Use
 
-For the quickest experience, visit our hosted application at:
-
-[HOSTED_SITE_URL_PLACEHOLDER]
-
-### Running Locally
+Once you have the application running (either hosted or locally):
 
 1. Upload your study materials through the web interface
 2. Fill in the form with your preferences:
