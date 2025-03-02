@@ -14,10 +14,10 @@ from langchain_core.documents import Document
 
 from .base_parser import BaseDocumentParser, parser_for
 
-@parser_for('pdf')
+
+@parser_for("pdf")
 class PDFParser(BaseDocumentParser):
-    """Parser strategy for PDF documents.
-    """
+    """Parser strategy for PDF documents."""
 
     def __init__(self):
         """Initialize the PDF parser."""
@@ -31,14 +31,16 @@ class PDFParser(BaseDocumentParser):
         parser = cls()
         parser._load_from_path(file_path)
         return parser
-        
+
     @classmethod
-    def from_bytes(cls, file_bytes: bytes, file_name: Optional[str] = None) -> "PDFParser":
+    def from_bytes(
+        cls, file_bytes: bytes, file_name: Optional[str] = None
+    ) -> "PDFParser":
         """Create a PDFParser instance from bytes."""
         parser = cls()
         parser._load_from_bytes(file_bytes)
         return parser
-        
+
     @classmethod
     def from_upload_file(cls, upload_file: UploadFile) -> "PDFParser":
         """Create a PDFParser instance from an UploadFile."""
@@ -75,7 +77,7 @@ class PDFParser(BaseDocumentParser):
 
     def parse(self) -> str:
         """Parse the PDF document and return the extracted text.
-        
+
         Returns:
             Full text content of the PDF
         """

@@ -10,28 +10,30 @@ from fastapi.datastructures import UploadFile as FastAPIUploadFile
 project_root = Path(__file__).parents[3]  # Go up 3 levels from this file
 pdf_path = project_root / "public" / "StrategyPatternInClassExercise.pdf"
 
+
 # Create a FastAPI UploadFile compatible object
 def create_upload_file_from_path(file_path, filename=None):
     if filename is None:
         filename = os.path.basename(file_path)
-    
+
     with open(file_path, "rb") as f:
         content = f.read()
-    
+
     file_like = io.BytesIO(content)
-    
+
     # Create a SpooledTemporaryFile-like object (what FastAPI expects)
     spool = Mock()
     spool.read = lambda: content
     spool.seek = lambda *args: file_like.seek(*args)
-    
+
     # Create a FastAPI UploadFile
     return FastAPIUploadFile(
         file=file_like,
         size=len(content),
         filename=filename,
-        headers={"content-type": "application/pdf"}
+        headers={"content-type": "application/pdf"},
     )
+
 
 # Load PDF for parsing
 from backend.parsers.pdf_parser import PDFParser, extract_text_from_path
@@ -80,12 +82,12 @@ test_input = UserForm(
 print(f"Created test_input with course_name: {test_input.course_name}")
 print(f"Number of files: {len(test_input.subject_material)}")
 
-print(f'\n\nTEST INPUT:\n\n{test_input}')
+print(f"\n\nTEST INPUT:\n\n{test_input}")
 
 # Write the extracted PDF text to a file
 # Generate output filename based on the PDF name
 pdf_name = os.path.basename(pdf_path)
-txt_name = pdf_name.rsplit('.', 1)[0] + '.txt'  # Replace .pdf with .txt
+txt_name = pdf_name.rsplit(".", 1)[0] + ".txt"  # Replace .pdf with .txt
 output_path = project_root / "output" / txt_name
 
 # Create output directory if it doesn't exist
@@ -93,18 +95,18 @@ output_dir = output_path.parent
 output_dir.mkdir(exist_ok=True, parents=True)
 
 # Write the text to the file
-with open(output_path, 'w', encoding='utf-8') as f:
+with open(output_path, "w", encoding="utf-8") as f:
     f.write(pdf_text1)
 
 print(f"\nExtracted PDF text has been written to: {output_path}")
 
 # Optionally, write each page to a separate file
-pages_dir = output_dir / (pdf_name.rsplit('.', 1)[0] + "_pages")
+pages_dir = output_dir / (pdf_name.rsplit(".", 1)[0] + "_pages")
 pages_dir.mkdir(exist_ok=True)
 
 for i, page_text in enumerate(pages):
     page_file = pages_dir / f"page_{i+1:03d}.txt"
-    with open(page_file, 'w', encoding='utf-8') as f:
+    with open(page_file, "w", encoding="utf-8") as f:
         f.write(page_text)
 
 print(f"Individual pages have been written to: {pages_dir}")

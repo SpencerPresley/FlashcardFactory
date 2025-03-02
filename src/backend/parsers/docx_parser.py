@@ -1,5 +1,4 @@
-"""DOCX parsing strategy implementation using the strategy pattern.
-"""
+"""DOCX parsing strategy implementation using the strategy pattern."""
 
 import io
 import tempfile
@@ -12,7 +11,8 @@ from langchain_community.document_loaders import Docx2txtLoader
 
 from .base_parser import BaseDocumentParser, parser_for
 
-@parser_for('docx')
+
+@parser_for("docx")
 class DOCXParser(BaseDocumentParser):
     """
     Parser strategy for DOCX documents.
@@ -30,14 +30,16 @@ class DOCXParser(BaseDocumentParser):
         parser = cls()
         parser._load_from_path(file_path)
         return parser
-        
+
     @classmethod
-    def from_bytes(cls, file_bytes: bytes, file_name: Optional[str] = None) -> "DOCXParser":
+    def from_bytes(
+        cls, file_bytes: bytes, file_name: Optional[str] = None
+    ) -> "DOCXParser":
         """Create a DOCXParser instance from bytes."""
         parser = cls()
         parser._load_from_bytes(file_bytes)
         return parser
-        
+
     @classmethod
     def from_upload_file(cls, upload_file: UploadFile) -> "DOCXParser":
         """Create a DOCXParser instance from an UploadFile."""
@@ -75,7 +77,7 @@ class DOCXParser(BaseDocumentParser):
     def parse(self) -> str:
         """
         Parse the DOCX document and return the extracted text.
-        
+
         Returns:
             Full text content of the DOCX
         """

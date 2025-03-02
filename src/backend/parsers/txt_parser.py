@@ -12,7 +12,8 @@ from langchain_core.documents import Document
 
 from .base_parser import BaseDocumentParser, parser_for
 
-@parser_for('txt')
+
+@parser_for("txt")
 class TXTParser(BaseDocumentParser):
     """
     Parser strategy for plain text documents.
@@ -29,14 +30,16 @@ class TXTParser(BaseDocumentParser):
         parser = cls()
         parser._load_from_path(file_path)
         return parser
-        
+
     @classmethod
-    def from_bytes(cls, file_bytes: bytes, file_name: Optional[str] = None) -> "TXTParser":
+    def from_bytes(
+        cls, file_bytes: bytes, file_name: Optional[str] = None
+    ) -> "TXTParser":
         """Create a TXTParser instance from bytes."""
         parser = cls()
         parser._load_from_bytes(file_bytes)
         return parser
-        
+
     @classmethod
     def from_upload_file(cls, upload_file: UploadFile) -> "TXTParser":
         """Create a TXTParser instance from an UploadFile."""
@@ -46,12 +49,12 @@ class TXTParser(BaseDocumentParser):
 
     def _load_from_path(self, file_path: Union[str, Path]):
         """Load text from a file path."""
-        with open(file_path, 'r', encoding='utf-8', errors='replace') as f:
+        with open(file_path, "r", encoding="utf-8", errors="replace") as f:
             self.content = f.read()
 
     def _load_from_bytes(self, file_bytes: bytes):
         """Load text from bytes."""
-        self.content = file_bytes.decode('utf-8', errors='replace')
+        self.content = file_bytes.decode("utf-8", errors="replace")
 
     def _load_from_upload_file(self, upload_file: UploadFile):
         """Load text from a FastAPI UploadFile."""
@@ -59,7 +62,7 @@ class TXTParser(BaseDocumentParser):
         content = upload_file.file.read()
 
         # Decode bytes to string
-        self.content = content.decode('utf-8', errors='replace')
+        self.content = content.decode("utf-8", errors="replace")
 
         # Reset file pointer for future reads
         upload_file.file.seek(0)
@@ -67,7 +70,7 @@ class TXTParser(BaseDocumentParser):
     def parse(self) -> str:
         """
         Parse the text document and return the content.
-        
+
         Returns:
             Full text content
         """
@@ -82,5 +85,5 @@ class TXTParser(BaseDocumentParser):
         """
         if not self.content:
             return []
-        
+
         return [Document(page_content=self.content, metadata={"source": "text"})]

@@ -6,6 +6,7 @@ import os
 
 load_dotenv()
 
+
 def test_cleaner():
     cleaner = CleanerChain(api_key=os.getenv("GOOGLE_API_KEY"))
     text = load_test_data()
@@ -13,6 +14,7 @@ def test_cleaner():
     print(cleaned_text)
     with open("cleaned_text.txt", "w") as file:
         file.write(cleaned_text)
-        
+
+
 if __name__ == "__main__":
     test_cleaner()

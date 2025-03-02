@@ -1,4 +1,3 @@
-
 CLEANER_HUMAN_PROMPT = """
 Here is the text that needs to be cleaned:
 
