@@ -4,13 +4,12 @@ document
     this.value = this.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
   });
 
-const form = document.getElementById("form");
+const form = document.getElementById("file-input");
 
 form.addEventListener("submit", function (event) {
   //event.preventDefault(); // Prevents the default form submission
 
   form.submit();
-  console.log(response);
 });
 
 const fileInput = document.getElementById("fileInput");
