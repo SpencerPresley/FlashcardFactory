@@ -17,7 +17,10 @@ def run(
     api_key: str,
     cleaner_model: str | None = "gemini-2.0-flash-thinking-exp-01-21",
     flashcarder_model: str | None = "gemini-2.0-pro-exp-02-05",
-) -> dict[str, str]:
+) -> dict[str, str]
+    if api_key is None or api_key == "":
+        raise ValueError("api_key can not be none: Received: {api_key}")
+
     subject_material = _run_parsing(user_form.subject_material)
     cleaned_text = _run_cleaner(subject_material, api_key, cleaner_model)
     flashcards = _run_flashcarder(cleaned_text, user_form, api_key, flashcarder_model)
