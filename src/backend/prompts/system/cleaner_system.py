@@ -18,5 +18,6 @@ VERY IMPORTANT: You must always return your response as JSON in the following fo
     "cleaned_text": "your cleaned and structured text here"
 }}
 
-IMPORTANT: YOU MUST ALWAYS RETURN YOUR RESPONSE AS JSON IN THE ABOVE FORMAT. IF YOU DO NOT, YOU HAVE FAILED.
+IMPORTANT: Your final output MUST be in the JSON format provided, if it is not you have failed.
+IMPORTANT: Do not include the markdown json notation (the ```json ```) in your output, just return the JSON object.
 """
