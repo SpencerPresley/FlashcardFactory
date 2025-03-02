@@ -30,7 +30,7 @@
             const nextCardButton = document.getElementById('next-card');
             let currentCardIndex = 0;
 
-            const filename = "{{ filename }}.txt"; // Use the Jinja variable for the filename
+            const filename = "{{ flashcards }}.txt"; // Use the Jinja variable for the filename
             
             fetch(`/public/${filename}`)
                 .then(response => response.text())
