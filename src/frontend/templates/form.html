@@ -9,7 +9,9 @@
   </head>
   <body>
     <h1 class="webname">Flashcard Maker</h1>
-    <p class="about">Have an exam coming up? Flashcard Maker automatically </p>
+    <p class="about">Have an exam coming up? Flashcard Maker automatically transforms your powerpoints, pdfs, notes, and more into flashcards!
+      Simply upload your files, optionally add some details about your class, and generate your flashcards. It's that easy!
+    </p>
     <div class="steps">
       <p class="instructions">Step 1: Upload your files (.pdf, .ppt, .docx, .txt).</p>
     </div>
@@ -24,7 +26,7 @@
     <form id="file-input" action="/build" method="post" enctype="multipart/form-data">
       
       <div class="file-upload-container" id="fileUploadContainer">
-        <input type="file" id="fileInput" name="subject_material" multiple>
+        <input type="file" accept=".pdf, .txt, .pptx, .docx, .ppt" id="fileInput" name="subject_material" multiple>
         <p>Drag and drop your files here or</p>
         <button class="custom-btn" type="button" onclick="document.getElementById('fileInput').click();">Choose Files</button>
         <h3 class="fileNames">Selected Files:</h3>
