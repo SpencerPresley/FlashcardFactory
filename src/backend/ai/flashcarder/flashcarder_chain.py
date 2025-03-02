@@ -13,8 +13,7 @@ if TYPE_CHECKING:
 
 class FlashcarderChain:
     def __init__(
-        self, api_key: str, 
-        model: str | None = "gemini-2.0-flash-thinking-exp-01-21"
+        self, api_key: str, model: str | None = "gemini-2.0-flash-thinking-exp-01-21"
     ):
         self.cp = ChainComposer(
             model=model,

@@ -58,11 +58,11 @@ def make_cards(
     )
 
     flash_cards = run(
-        data, 
+        data,
         os.getenv("GOOGLE_API_KEY"),
         cleaner_model="gemini-2.0-pro-exp-02-05",
         flashcarder_model="gemini-2.0-pro-exp-02-05",
-        ).get("flashcards_file_path")
+    ).get("flashcards_file_path")
 
     return templates.TemplateResponse(
         request=request,
