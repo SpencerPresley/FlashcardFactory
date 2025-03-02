@@ -133,20 +133,22 @@ While our application provides a built-in flashcard interface, you can also expo
 
 ## Project Structure
 
+```
 .
-├── public/ # Public assets
+├── public/               # Public assets
 ├── src/
-│ ├── backend/
-│ │ ├── ai/ # AI processing modules
-│ │ ├── models/ # Data models
-│ │ ├── parsers/ # Document parsing logic
-│ │ └── prompts/ # AI prompt templates
-│ └── frontend/
-│ ├── static/ # CSS, JavaScript
-│ └── templates/ # HTML templates
-├── server.py # FastAPI server
-├── requirements.txt # Python dependencies
-└── run.sh # Startup script
+│   ├── backend/
+│   │   ├── ai/           # AI processing modules
+│   │   ├── models/       # Data models
+│   │   ├── parsers/      # Document parsing logic
+│   │   └── prompts/      # AI prompt templates
+│   └── frontend/
+│       ├── static/       # CSS, JavaScript
+│       └── templates/    # HTML templates
+├── server.py             # FastAPI server
+├── requirements.txt      # Python dependencies
+└── run.sh                # Startup script
+```
 
 ## Acknowledgments
 
