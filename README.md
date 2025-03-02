@@ -14,6 +14,7 @@
     - [Running Locally](#running-locally)
       - [Prerequisites](#prerequisites)
       - [Installation](#installation)
+      - [Using Docker (Recommended)](#using-docker-recommended)
     - [How to Use](#how-to-use)
   - [Exporting to Quizlet](#exporting-to-quizlet)
   - [Project Structure](#project-structure)
@@ -44,6 +45,7 @@ FlashcardFactory is an intelligent study tool that automatically generates custo
 - **AI Processing**: Google's Gemini AI models
 - **Document Parsing**: Multiple document format support (PDF, DOCX, PPT, TXT)
 - **Frontend**: HTML/CSS with Jinja2 templates
+- **Development & Deployment**: Docker and Docker Compose for containerization
 
 ## Technologies Used
 
@@ -53,6 +55,8 @@ FlashcardFactory is an intelligent study tool that automatically generates custo
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" />
   <img src="https://img.shields.io/badge/Jinja2-B41717?style=for-the-badge&logo=jinja&logoColor=white" alt="Jinja2" />
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />
+  <img src="https://img.shields.io/badge/Docker_Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker Compose" />
   <img src="https://img.shields.io/badge/Google_Gemini-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Google Gemini" />
 </div>
 
@@ -68,11 +72,12 @@ For the quickest experience with no setup required, visit our hosted application
 
 ### Running Locally
 
-If you prefer to run the application on your own machine, follow these steps:
+You can run FlashcardFactory locally either with Docker (recommended) or by setting up Python directly.
 
 #### Prerequisites
 
-- Python 3.8+
+- Python 3.8+ (if not using Docker)
+- Docker and Docker Compose (for Docker method)
 - Google API key (for Gemini AI)
 
 #### Installation
@@ -84,21 +89,61 @@ If you prefer to run the application on your own machine, follow these steps:
    cd HenHacks2025
    ```
 
-2. Install dependencies
-
-   ```bash
-   pip install -r requirements.txt
-   pip install -e .
-   ```
-
-3. Set up your environment variables
+2. Set up your environment variables
 
    ```bash
    # Create a .env file with your Google API key
    echo "GOOGLE_API_KEY=your_api_key_here" > .env
    ```
 
-4. Run the application
+3. Choose one of the following methods to run the application:
+
+#### Using Docker (Recommended)
+
+The easiest way to run FlashcardFactory locally is with Docker:
+
+1. Make sure Docker and Docker Compose are installed on your system
+
+2. Run the application:
+
+   ```bash
+   chmod +x run_docker.sh
+   ```
+
+   ```bash
+   ./run_docker.sh
+   ```
+
+   Alternatively, you can use Docker Compose directly:
+
+   ```bash
+   docker compose up -d
+   ```
+
+3. Open your browser and navigate to `http://localhost:8000`
+
+4. To view logs:
+
+   ```bash
+   docker compose logs -f
+   ```
+
+5. To stop the application:
+
+   ```bash
+   docker compose down
+   ```
+
+**If you prefer not to use Docker**, you can run directly with Python:
+
+1. Install dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   pip install -e .
+   ```
+
+2. Run the application:
 
    ```bash
    sh run.sh
@@ -106,7 +151,7 @@ If you prefer to run the application on your own machine, follow these steps:
    uvicorn server:app --reload
    ```
 
-5. Open your browser and navigate to `http://localhost:8000`
+3. Open your browser and navigate to `http://localhost:8000`
 
 ### How to Use
 
