@@ -85,6 +85,12 @@ Whos the fifth president, James Monroe; Whos the sixteenth president, Abraham Li
 When was the Declaration of Independence signed, July 4, 1776; What year did the Civil War end, 1865;
 Who invented the telephone, Alexander Graham Bell; What year did the first moon landing occur, 1969;
 
+NOTICE THE FORMAT IS:
+<question>, <answer>; <question>, <answer>; <question>, <answer>;
+
+NOT:
+<question>; <answer>; <question>; <answer>; <question>; <answer>; DO NOT DO IT THIS WAY
+
 ## Final Output Example
 
 For reference, here's how your final output format should look:
