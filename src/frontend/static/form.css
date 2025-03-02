@@ -66,12 +66,10 @@ form select {
     background-color: #e8f5e9;
 }
 
-/* Hiding the default file input button */
 #fileInput {
     display: none;
 }
 
-/* Custom button style */
 .custom-btn {
     display: inline-block;
     padding: 12px 20px;
@@ -94,8 +92,8 @@ form select {
 
 ul {
     list-style: none;
-    padding: 0; /* Removes default left padding */
-    margin: 0; /* Removes default margin (optional) */
+    padding: 0;
+    margin: 0;
     font-size: 2vw;
 }
 
@@ -135,6 +133,10 @@ ul {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #45a049;
 }
 
 .steps {

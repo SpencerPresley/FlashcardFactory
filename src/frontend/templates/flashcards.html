@@ -3,80 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flashcards</title>
+    <title>Flashcard Factory</title>
     <link rel="stylesheet" href="../static/flashcards.css">
 </head>
 <body>
-    <h1 class="webname">Flashcard Maker</h1>
-    <div id="flashcard-container">
-        <div id="flashcard">
+    <h1 class="webname">Flashcard Factory</h1>
+
+        <div class="flashcard">
             <div id="question"></div>
-            <div id="answer" style="display: none;"></div>
+            <div id="answer"></div>
         </div>
-        <button id="toggle-answer">Show Answer</button>
-        <button id="prev-card">Previous</button>
-        <button id="next-card">Next</button>
 
-        <a href="/public/flashcards.txt" class="downloadButton" download>Download File</a>
-    </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const flashcards = [];
-            const flashcardContainer = document.getElementById('flashcard-container');
-            const questionElement = document.getElementById('question');
-            const answerElement = document.getElementById('answer');
-            const toggleAnswerButton = document.getElementById('toggle-answer');
-            const prevCardButton = document.getElementById('prev-card');
-            const nextCardButton = document.getElementById('next-card');
-            let currentCardIndex = 0;
+        <div class="answer">
+            <button id="toggle-answer">Show Answer</button>
+        </div>
 
-            const filename = "{{ flashcards }}.txt"; // Use the Jinja variable for the filename
-            
-            fetch(`/public/${filename}`)
-                .then(response => response.text())
-                .then(data => {
-                    const lines = data.split(';');
-                    lines.forEach(line => {
-                        const [question, answer] = line.split(',');
-                        if (question && answer) {
-                            flashcards.push({ question: question.trim(), answer: answer.trim() });
-                        }
-                    });
-                    displayFlashcard();
-                });
+        <div class="prevNext">
+            <button id="prev-card">Previous</button>
+            <button id="next-card">Next</button>
+        </div>
 
-            function displayFlashcard() {
-                const flashcard = flashcards[currentCardIndex];
-                questionElement.textContent = flashcard.question;
-                answerElement.textContent = flashcard.answer;
-                answerElement.style.display = 'none';
-                toggleAnswerButton.textContent = 'Show Answer';
-            }
-
-            toggleAnswerButton.addEventListener('click', () => {
-                if (answerElement.style.display === 'none') {
-                    answerElement.style.display = 'block';
-                    toggleAnswerButton.textContent = 'Hide Answer';
-                } else {
-                    answerElement.style.display = 'none';
-                    toggleAnswerButton.textContent = 'Show Answer';
-                }
-            });
-
-            prevCardButton.addEventListener('click', () => {
-                if (currentCardIndex > 0) {
-                    currentCardIndex--;
-                    displayFlashcard();
-                }
-            });
-
-            nextCardButton.addEventListener('click', () => {
-                if (currentCardIndex < flashcards.length - 1) {
-                    currentCardIndex++;
-                    displayFlashcard();
-                }
-            });
-        });
-    </script>
+        <div class="download">
+            <a href="/public/sample.txt" class="downloadButton" download>Download</a>
+        </div>
+    <script src="../static/flashcards.js"></script>
 </body>
 </html>
