@@ -16,6 +16,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
+
 app = FastAPI()
 
 templates = Jinja2Templates(directory="src/frontend/templates")
@@ -56,10 +57,15 @@ def make_cards(
         subject_material=subject_material,
         num_flash_cards=num_flash_cards,
     )
-
-    # flash_cards = "sample.txt"
-
-    flash_cards = run(data, os.getenv("GOOGLE_API_KEY"))
+    
+   # flash_cards = "sample.txt"
+    
+    flash_cards = run(
+        data,
+        os.getenv("GOOGLE_API_KEY")
+    ).get("flashcards_file_path")
+    
+    
 
     return templates.TemplateResponse(
         request=request,
