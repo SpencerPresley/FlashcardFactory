@@ -13,7 +13,7 @@ from src.backend.ai import run
 
 from dotenv import load_dotenv
 
-load_dotenv
+load_dotenv()
 
 
 
@@ -59,7 +59,7 @@ def make_cards(
     flash_cards = run(
         data,
         os.getenv("GOOGLE_API_KEY")
-    )
+    ).get("flashcards_file_path")
     
     
 

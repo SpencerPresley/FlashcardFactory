@@ -23,9 +23,9 @@
     <form id="file-input" action="/build" method="post" enctype="multipart/form-data">
       
       <div class="file-upload-container" id="fileUploadContainer">
-        <input type="file" id="fileInput" multiple>
+        <input type="file" id="fileInput" name="subject_material" multiple>
         <p>Drag and drop your files here or</p>
-        <button class="custom-btn" onclick="document.getElementById('fileInput').click();">Choose Files</button>
+        <button class="custom-btn" type="button" onclick="document.getElementById('fileInput').click();">Choose Files</button>
         <h3 class="fileNames">Selected Files:</h3>
         <ul id="fileList"></ul>
       </div>
