@@ -5,31 +5,16 @@ from typing import List, Optional, Union
 from fastapi import FastAPI, Request, UploadFile, Form, File
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+import os
 
 # USE THIS
 from src.backend.models.user_form import UserForm
+from src.backend.ai import run
 
+from dotenv import load_dotenv
 
-"""
-class UserForm(BaseModel):
-    course_name: str
-    difficulty: str
-    school_level: str
-    subject: str
-    subject_material: List[UploadFile]
-    num_flash_cards: int | None = None
-"""
+load_dotenv
 
-"""
-class FlashCard(BaseModel):
-    question: str
-    answer: str
-"""
-
-
-class FlashCards(BaseModel):
-    # flashCards: List[FlashCard]
-    file_name: str
 
 
 app = FastAPI()
@@ -59,31 +44,27 @@ def make_cards(
 ):
     num_flash_cards = int(num_flash_cards) if num_flash_cards and num_flash_cards.strip().isdigit() else None
 
-    '''
-class UserForm(BaseModel):
-    course_name: str
-    difficulty: str
-    school_level: str
-    subject: str
-    rules: str
-    subject_material: List[UploadFile]
-    num_flash_cards: int | None = None
-    '''
     data = UserForm(
         course_name=course_name,
         difficulty=difficulty,
         school_level=school_level,
         subject=subject,
-        rules=rules
+        rules=rules,
         subject_material=subject_material,
         num_flash_cards=num_flash_cards,
     )
-
-    # flashCards = run(data)
-    flash_cards = FlashCards(file_name="sample.txt")
+    
+   # flash_cards = "sample.txt"
+    
+    flash_cards = run(
+        data,
+        os.getenv("GOOGLE_API_KEY")
+    )
+    
+    
 
     return templates.TemplateResponse(
         request=request,
         name="flashcards.html",
-        context={"Settings": data, "Test": flash_cards},
+        context={"Settings": data, "flashcards": flash_cards},
     )

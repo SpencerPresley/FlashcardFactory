@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flashcards</title>
+    <link rel="stylesheet" href="../static/flashcards.css">
 </head>
 <body>
-    <a href="{{ url_for('public', path='sample.txt') }}" download>Download File</a>
+    <a href="{{ url_for('public', path='{{flashCards}}') }}" class="downloadButton" download>Download File</a>
 
 </body>
 </html>
