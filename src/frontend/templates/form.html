@@ -9,35 +9,47 @@
   </head>
   <body>
     <h1 class="webname">Flashcard Maker</h1>
+    <p class="about"></p>
+    <div class="steps">
+      <p class="instructions">Step 1: Upload your files (images, text, etc.)</p>
 
+    </div>
+    <div class="steps">
+      <p class="instructions">Step 2: Enter a class name, subject, rules, number of flashcards, difficulty, and school level</p>
+    </div>
+    <div class="steps">
+      <p class="instructions">Step 3: Generate your custom lashcards!</p>
+    </div>
     <form id="file-input" action="/build" method="post" enctype="multipart/form-data">
+      
       <div class="file-upload-container" id="fileUploadContainer">
         <input type="file" id="fileInput" multiple>
         <p>Drag and drop your files here or</p>
         <button class="custom-btn" onclick="document.getElementById('fileInput').click();">Choose Files</button>
-      </div>
-  
-      <h3>Selected Files:</h3>
-      <ul id="fileList"></ul>
-      <div>
-        <input type="text" name="course_name" class="field" id="course_name" placeholder="Enter a Class Name" onfocus="this.placeholder=''" onblur="this.placeholder='Enter a Class Name'" required>
-        <input type="text" name="subject" class="field" id="subject" placeholder="Enter a Subject" onfocus="this.placeholder=''" onblur="this.placeholder='Enter a Subject'" required>
-      </div>
-      <br><br>
-      <div>
-        <input type="text" name="rules" class="field" id="rules" placeholder="Enter Rules" onfocus="this.placeholder=''" onblur="this.placeholder='Enter Rules'" required>
-        <input type="number" name="num_flash_cards" class="field" id="num_flash_cards" placeholder="Enter # of Flashcards" min="1" onfocus="this.placeholder=''" onblur="this.placeholder='Enter # of Flashcards'">
+        <h3 class="fileNames">Selected Files:</h3>
+        <ul id="fileList"></ul>
       </div>
       <br><br>
 
-      <div>
-      <select id="difficulty" name="difficulty">
+      <div class="fields1">
+        <input type="text" name="course_name" class="field" id="course_name" placeholder="Enter a Class Name" onfocus="this.placeholder=''" onblur="this.placeholder='Enter a Class Name'" required>
+        <input type="text" name="subject" class="field" id="subject" placeholder="Enter a Subject" onfocus="this.placeholder=''" onblur="this.placeholder='Enter a Subject'" required>
+      </div>
+
+      <div class="fields2">
+        <input type="text" name="rules" class="field" id="rules" placeholder="Enter Rules" onfocus="this.placeholder=''" onblur="this.placeholder='Enter Rules'" required>
+        <input type="number" name="num_flash_cards" class="field" id="num_flash_cards" placeholder="Enter # of Flashcards" min="1" onfocus="this.placeholder=''" onblur="this.placeholder='Enter # of Flashcards'">
+      </div>
+
+      <div class="fields3">
+      <select class="field" id="difficulty" name="difficulty">
+        <option value="" disabled selected>Select a Difficulty</option>
         <option value="easy">Easy</option>
         <option value="medium">Medium</option>
         <option value="hard">Hard</option>
       </select>
-
-      <select id="school_level" name="school_level">
+      <select class="field" id="school_level" name="school_level">
+        <option value="" disabled selected>Select an Education Level</option>
         <option value="elementary">Elementary School</option>
         <option value="middle">Middle School</option>
         <option value="high">High School</option>
@@ -45,12 +57,14 @@
         <option value="grad">Grad School</option>
       </select>
       </div>
+    <div class="submit">
+      <input class="submit-button" type="submit" value="Create Flashcards!">
+    </div>
     
-    <br><br>
-
-    <input type="submit" value="Submit">
     </form>
 
+    <br><br>
+    <br><br>
     <br><br>
 
     <script src="../static/formRules.js"></script>
