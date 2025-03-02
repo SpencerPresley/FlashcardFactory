@@ -140,6 +140,7 @@ ul {
 .steps {
     display: flex;
     justify-content: center;
+    text-align: center;
     align-items: center;
     font-size: 3vw;
     background-color: beige;
@@ -147,6 +148,8 @@ ul {
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    
 }
 
 h1 {

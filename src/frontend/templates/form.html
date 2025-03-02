@@ -9,17 +9,18 @@
   </head>
   <body>
     <h1 class="webname">Flashcard Maker</h1>
-    <p class="about"></p>
+    <p class="about">Have an exam coming up? Flashcard Maker automatically </p>
     <div class="steps">
-      <p class="instructions">Step 1: Upload your files (images, text, etc.)</p>
+      <p class="instructions">Step 1: Upload your files (.pdf, .ppt, .docx, .txt).</p>
+    </div>
+    <div class="steps">
+      <p class="instructions">Step 2: Optionally enter a class name, subject, rules, number of flashcards, difficulty, or education level.</p>
+    </div>
 
-    </div>
     <div class="steps">
-      <p class="instructions">Step 2: Enter a class name, subject, rules, number of flashcards, difficulty, and school level</p>
+      <p class="instructions">Step 3: Generate your flashcards!</p>
     </div>
-    <div class="steps">
-      <p class="instructions">Step 3: Generate your custom lashcards!</p>
-    </div>
+    <br><br>
     <form id="file-input" action="/build" method="post" enctype="multipart/form-data">
       
       <div class="file-upload-container" id="fileUploadContainer">
