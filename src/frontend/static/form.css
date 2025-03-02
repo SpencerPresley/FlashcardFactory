@@ -169,8 +169,7 @@ h1 {
 
 /* Loading overlay */
 #loading-overlay {
-    /* Hidden by default - both in CSS and with inline style for redundancy */
-    display: none !important; 
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
