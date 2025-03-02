@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  flashcard-factory:
+    build: .
+    container_name: flashcard-factory
+    ports:
+      - "8000:8000"
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+    volumes:
+      - ./output:/app/output
+    restart: unless-stopped

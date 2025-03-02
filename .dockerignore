@@ -1,0 +1,13 @@
+.git
+.gitignore
+__pycache__/
+*.py[cod]
+*$py.class
+.DS_Store
+.venv/
+output/
+test_files/
+*.log
+README.md
+flashcard-factory.service
+.dockerignore 

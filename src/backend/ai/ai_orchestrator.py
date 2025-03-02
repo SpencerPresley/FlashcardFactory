@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import List, TYPE_CHECKING
 import os
 from pathlib import Path
+import time
 
 from backend.ai import CleanerChain, FlashcarderChain
 from backend.models import UserFormReg
@@ -24,6 +25,7 @@ def run(
 
     subject_material = _run_parsing(user_form.subject_material)
     cleaned_text = _run_cleaner(subject_material, api_key, cleaner_model)
+    time.sleep(5)
     flashcards = _run_flashcarder(cleaned_text, user_form, api_key, flashcarder_model)
     public_dir = _get_public_dir()
     flashcards_file_path = public_dir / "flashcards.txt"
