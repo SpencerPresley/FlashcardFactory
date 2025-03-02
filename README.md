@@ -1,4 +1,4 @@
-# FlashcardFactory
+![Flash Factory Logo]("./FlashFactory.png")
 
 ## Table of Contents
 
@@ -111,7 +111,9 @@ If you prefer to run the application on your own machine, follow these steps:
 ### How to Use
 
 Once you have the application running (either hosted or locally):
-****
+
+---
+
 1. Upload your study materials through the web interface
 2. Fill in the form with your preferences:
    - Course name
