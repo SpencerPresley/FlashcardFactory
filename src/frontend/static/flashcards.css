@@ -19,3 +19,53 @@
 .downloadButton:active {
   transform: scale(0.95); /* Click effect */
 }
+
+:root {
+  --background-color: lightgray;
+  --flashcard-bg-color: white;
+  --text-color: black;
+}
+
+body {
+  margin: 0;
+  padding: 20px; /* Add padding to create a gap around the edge */
+  font-family: Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+  color: black;
+}
+
+#flashcard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+#flashcard {
+  background-color: var(--flashcard-bg-color);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  text-align: center;
+  font-size: xx-large;
+  margin-bottom: 30px;
+  height: 75%;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: large;
+  cursor: pointer;
+}
