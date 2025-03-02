@@ -6,4 +6,8 @@ unstructured
 jinja2
 docx2txt
 pymupdf
+python-pptx
+python-docx
+uvicorn
+python-multipart
 python-dotenv
