@@ -25,7 +25,6 @@ def run(
 
     subject_material = _run_parsing(user_form.subject_material)
     cleaned_text = _run_cleaner(subject_material, api_key, cleaner_model)
-    time.sleep(5)
     flashcards = _run_flashcarder(cleaned_text, user_form, api_key, flashcarder_model)
     public_dir = _get_public_dir()
     flashcards_file_path = public_dir / "flashcards.txt"
