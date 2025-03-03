@@ -4,6 +4,7 @@
 
 - [FlashcardFactory](#flashcardfactory)
   - [Table of Contents](#table-of-contents)
+  - [Demo](#demo)
   - [Overview](#overview)
   - [Features](#features)
   - [How It Works](#how-it-works)
@@ -19,6 +20,8 @@
   - [Exporting to Quizlet](#exporting-to-quizlet)
   - [Project Structure](#project-structure)
   - [Acknowledgments](#acknowledgments)
+
+## Demo
 
 ## Overview
 
