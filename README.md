@@ -23,6 +23,10 @@
 
 ## Demo
 
+[![FlashcardFactory Demo](https://img.youtube.com/vi/5cjt5jyaeoM/0.jpg)](https://youtu.be/5cjt5jyaeoM)
+
+Watch our [demo video on YouTube](https://youtu.be/5cjt5jyaeoM) to see FlashcardFactory in action!
+
 ## Overview
 
 FlashcardFactory is an intelligent study tool that automatically generates customized flashcards from educational materials. The application uses AI to analyze uploaded documents and create study cards tailored to your preferences and educational level.
